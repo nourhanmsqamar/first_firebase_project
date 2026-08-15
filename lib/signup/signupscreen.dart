@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_project/signup/register_cubit.dart';
 
+import '../home/home_screen.dart';
+
 class signupscreen extends StatelessWidget {
   const signupscreen({super.key});
 
@@ -24,22 +26,26 @@ class signupscreen extends StatelessWidget {
         ),
         body: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
-            if(state is RegisterSuccess){
+            if (state is RegisterSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    backgroundColor: Colors.green,
-                      content: Text("SUCCESS CREATED ACCOUNT",style: TextStyle(
-                        color: Colors.white
-                      ),))
+                const SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text(
+                    "SUCCESS CREATED ACCOUNT",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               );
             }
-            if(state is RegisterFailure){
+            if (state is RegisterFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                      backgroundColor: Colors.green,
-                      content: Text(state.errMsg,style: const TextStyle(
-                          color: Colors.white
-                      ),))
+                SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text(
+                    state.errMsg,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
               );
             }
           },
@@ -71,6 +77,7 @@ class signupscreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
+
                     ///==========================email ===========================
                     TextFormField(
                       controller: cubit.emailControl,
@@ -86,8 +93,10 @@ class signupscreen extends StatelessWidget {
                         hintText: "Email",
                       ),
                     ),
+
                     ///==============================================
                     const SizedBox(height: 20),
+
                     ///================password==========================
                     TextFormField(
                       controller: cubit.passwordControl,
@@ -107,12 +116,20 @@ class signupscreen extends StatelessWidget {
                         hintText: "Password",
                       ),
                     ),
+
                     ///=============================================================
                     const SizedBox(height: 20),
 
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {cubit.signup();},
+                      onPressed: () {
+                        cubit.signup();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => home_screen(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size.fromHeight(50),
                         backgroundColor: const Color(0xffFF5E00),

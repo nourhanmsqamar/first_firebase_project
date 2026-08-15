@@ -3,7 +3,9 @@ import 'package:firebase_project/signin/signinscreen.dart';
 import 'package:firebase_project/signup/signupscreen.dart';
 import 'package:flutter/material.dart';
 
+import 'add_student/add_student_screen.dart';
 import 'firebase_options.dart';
+import 'home/home_screen.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: signinscreen(),
+      home: home_screen(),
     );
   }
 }

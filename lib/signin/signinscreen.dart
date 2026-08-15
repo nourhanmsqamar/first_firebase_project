@@ -3,6 +3,8 @@ import 'package:firebase_project/signin/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../home/home_screen.dart';
+
 class signinscreen extends StatelessWidget {
   const signinscreen({super.key});
 
@@ -28,22 +30,26 @@ class signinscreen extends StatelessWidget {
         ),
         body: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
-            if(state is LoginSuccess){
+            if (state is LoginSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                      backgroundColor: Colors.green,
-                      content: Text("LOGIN SUCCESS ",style: TextStyle(
-                          color: Colors.white
-                      ),))
+                const SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text(
+                    "LOGIN SUCCESS ",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               );
             }
-            if(state is LoginFailure){
+            if (state is LoginFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                      backgroundColor: Colors.green,
-                      content: Text(state.errMsg,style: const TextStyle(
-                          color: Colors.white
-                      ),))
+                SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text(
+                    state.errMsg,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
               );
             }
           },
@@ -75,6 +81,7 @@ class signinscreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20),
+
                     ///===============EMAIL======================
                     TextFormField(
                       controller: cubit.emailControl,
@@ -90,8 +97,10 @@ class signinscreen extends StatelessWidget {
                         hintText: "Email",
                       ),
                     ),
+
                     ///===============================================
                     SizedBox(height: 20),
+
                     ///===================password===================
                     TextFormField(
                       controller: cubit.passwordControl,
@@ -111,6 +120,7 @@ class signinscreen extends StatelessWidget {
                         hintText: "Password",
                       ),
                     ),
+
                     ///=========================================================
                     SizedBox(height: 10),
                     Text(
@@ -120,7 +130,14 @@ class signinscreen extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {cubit.login();},
+                      onPressed: () {
+                        cubit.login();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => home_screen(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xffFF5E00),
                         fixedSize: Size.fromHeight(50),

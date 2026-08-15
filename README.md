@@ -1,20 +1,21 @@
-# 🚀 Firebase Auth Practice App
+# 🚀 Firebase Auth & Firestore CRUD App
 
-My first hands-on practice integrating **Flutter** with **Firebase Authentication** using **Cubit** for state management.
+My first hands-on practice integrating **Flutter** with **Firebase Authentication** and **Cloud Firestore**, managing all screen states with **Cubit**.
 
 ---
 
 ## 🛠️ Tech Stack
 * **Flutter & Dart**
 * **Firebase Auth** (User registration)
-* **Flutter Bloc / Cubit** (State management)
+* **Cloud Firestore** (Adding and retrieving student data)
+* **Flutter Bloc / Cubit** (Custom state management for each screen)
 
 ---
 
 ## 📌 Features
 * 🔐 Sign up with email and password.
-* ⏳ Real-time UI feedback (Loading indicators & error handling).
+* 📝 Add and store student records in Cloud Firestore.
+* 📥 Fetch and display student data dynamically.
+* 🔄 Comprehensive state management for all screens (Initial, Loading, Success, and Failure states).
+* ⏳ Real-time UI feedback with snackbars and indicators.
 
----
-
-Developed with ❤️ as my first Firebase integration practice.
